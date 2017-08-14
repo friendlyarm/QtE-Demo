@@ -55,6 +55,9 @@ void TMainWidget::resizeEvent(QResizeEvent*) {
     if (width() < 800) {
         qtdemoButton->hide();
         quitButton->hide();
+    } else {
+        qtdemoButton->show();
+        quitButton->show();
     }
 }
 
