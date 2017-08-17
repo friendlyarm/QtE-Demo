@@ -38,7 +38,7 @@ TMainWidget::TMainWidget(QWidget *parent) :
 void TMainWidget::qtdemoButtonClicked() {
     QPushButton* btn = (QPushButton*) sender();
     if (btn == qtdemoButton) {
-        system("/opt/QtE-Demo/run-fluidlauncher.sh&");
+        system("/opt/QtE-Demo/run-qtexample.sh&");
         exit(0);
     } else if (btn == quitButton) {
         QMessageBox::information(this, "Message", "Please press Alt-F2 to login from tty2.");
