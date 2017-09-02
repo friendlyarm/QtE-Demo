@@ -1,4 +1,4 @@
-#include "boardtype_test.h"
+#include "boardtype_friendlyelec.h"
 #include <ctype.h>
 
 const char* s5p_board_cputempfile = "/sys/class/hwmon/hwmon0/device/temp_label";
@@ -55,10 +55,13 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
 	{"sun50iw2", 4, NanoPi_NEO2, "NanoPi-NEO2", "1(0)"},
 	{"sun50iw2", 4, NanoPi_M1_Plus2, "NanoPi-M1-Plus2", "3(0)"}, 
     {"sun50iw2", 4, NanoPi_NEO_Plus2, "NanoPi-NEO-Plus2", "2(0)"},
+    {"sun50iw2", 4, NanoPi_NEO_Core2, "NanoPi-NEO-Core2", "0(0)"},
+
 	// kernel 4.x
 	{"Allwinnersun50iw2Family", 4, NanoPi_NEO2, "NanoPi-NEO2", "1(0)"},
 	{"Allwinnersun50iw2Family", 4, NanoPi_M1_Plus2, "NanoPi-M1-Plus2", "3(0)"},
     {"Allwinnersun50iw2Family", 4, NanoPi_NEO_Plus2, "NanoPi-NEO-Plus2", "2(0)"},
+    {"Allwinnersun50iw2Family", 4, NanoPi_NEO_Core2, "NanoPi-NEO-Core2", "0(0)"},
 
 	//k2
 	{"Amlogic", 0, NanoPi_K2, "NanoPi-K2", ""},

@@ -62,7 +62,8 @@ typedef struct {
 #define NanoPi_NEO_Plus2 (ALLWINNER_BASE+8)
 #define NanoPi_NEO_Core (ALLWINNER_BASE+9)
 #define NanoPi_Duo (ALLWINNER_BASE+10)
-#define ALLWINNER_MAX NanoPi_Duo
+#define NanoPi_NEO_Core2 (ALLWINNER_BASE+11)
+#define ALLWINNER_MAX NanoPi_NEO_Core2
 
 //amlogic
 #define AMLOGIC_BASE (8000)

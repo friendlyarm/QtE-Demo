@@ -18,7 +18,7 @@
 #include "mainwidget.h"
 #include "util.h"
 #include "sys/sysinfo.h"
-#include "boardtype_test.h"
+#include "boardtype_friendlyelec.h"
 
 TMainWidget::TMainWidget(QWidget *parent) :
     QWidget(parent),bg(QPixmap(":/bg.png"))
