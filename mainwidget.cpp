@@ -95,12 +95,33 @@ void TMainWidget::onKeepAlive() {
         if ((boardId >= S5P4418_BASE && boardId <= S5P4418_MAX)
             || (boardId >= S5P6818_BASE && boardId <= S5P6818_MAX)
             ) {
-            currentCPUTemp = Util::readFile("/sys/class/hwmon/hwmon0/device/temp_label").simplified();
-            maxCPUTemp = Util::readFile("/sys/class/hwmon/hwmon0/device/temp_max").simplified();
-        } else if (boardId >= ALLWINNER_BASE && boardId <= ALLWINNER_MAX) {
-            currentCPUTemp = Util::readFile("/sys/class/thermal/thermal_zone0/temp").simplified();
-            maxCPUTemp = Util::readFile("/sys/class/thermal/thermal_zone0/temp").simplified();
+            QString templ_filename("/sys/class/hwmon/hwmon0/device/temp_label");
+        QString tempm_filename("/sys/class/hwmon/hwmon0/device/temp_max");
+        QFile f1(templ_filename);
+        QFile f2(tempm_filename);
+        if (f1.exists()) {
+            currentCPUTemp = Util::readFile(templ_filename).simplified();
         }
+        if (f2.exists()) {
+            maxCPUTemp = Util::readFile(tempm_filename).simplified();
+        }
+
+    } else if (boardId >= ALLWINNER_BASE && boardId <= ALLWINNER_MAX) {
+        QString str;
+        bool ok=false;
+        QString templ_filename("/sys/class/thermal/thermal_zone0/temp");
+        QFile f3(templ_filename);
+        if (f3.exists()) {
+            float _currentCPUTemp = Util::readFile(templ_filename).simplified().toInt(&ok);
+            if (ok) {
+                if (_currentCPUTemp > 1000) {
+                    _currentCPUTemp = _currentCPUTemp / 1000;
+                }
+                currentCPUTemp = str.sprintf("%.1f",_currentCPUTemp);
+                maxCPUTemp = currentCPUTemp;
+            }
+        }
+    }
 	
 	bool ok1=false;
         float _currentCPUTemp = currentCPUTemp.toInt(&ok1);
@@ -140,19 +161,23 @@ void TMainWidget::onKeepAlive() {
 
 
     QString fileName = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
-    QString str = Util::readFile(fileName).simplified();
-    bool ok = false;
-    int freq = str.toInt(&ok,10);
+    QFile f5(fileName);
     freqStr = "";
-    if (ok) {
-	    QString str;
-	    if (freq > 1000000) {
-		    freqStr = str.sprintf("%.1fG",freq*1.0/1000000);
-	    } else if (freq > 1000) {
-		    freqStr = str.sprintf("%dM",freq/1000);
-	    } else {
-		    freqStr = str.sprintf("%d",freq);
-	    }
+    if (f5.exists()) {
+        QString str = Util::readFile(fileName).simplified();
+        bool ok = false;
+        int freq = str.toInt(&ok,10);
+        
+        if (ok) {
+            QString str;
+            if (freq > 1000000) {
+                freqStr = str.sprintf("%.1fG",freq*1.0/1000000);
+            } else if (freq > 1000) {
+                freqStr = str.sprintf("%dM",freq/1000);
+            } else {
+                freqStr = str.sprintf("%d",freq);
+            }
+        }
     }
     update();
 }
