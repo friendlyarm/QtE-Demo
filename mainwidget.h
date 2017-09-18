@@ -24,7 +24,7 @@ class TMainWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit TMainWidget(QWidget *parent = 0);
+    explicit TMainWidget(QWidget *parent, bool transparency, const QString& surl);
     ~TMainWidget() {}
 private slots:
     void onKeepAlive();
@@ -44,6 +44,9 @@ private:
     QString wlan0IP;
     QPushButton* qtdemoButton;
     QPushButton* quitButton;
+    bool transparent;
+    QString sourceCodeUrl;
+
 };
 
 #endif // WIDGET_H

@@ -19,7 +19,7 @@
 #include "mainwidget.h"
 int main(int argc, char **argv) { 
 	QApplication app (argc, argv); 
-	TMainWidget w;
+	TMainWidget w(0,false,"https://github.com/friendlyarm/QtE-Demo.git");
 	w.setWindowFlags(Qt::FramelessWindowHint);
 	w.showFullScreen();
 	return app.exec(); 

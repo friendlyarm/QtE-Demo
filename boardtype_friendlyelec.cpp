@@ -31,20 +31,20 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
 	{"nanopi3", 7, NanoPi_M3, "NanoPi-M3",""},
 
 	//allwinner h3
-        // kernel 3.x
+    // kernel 3.x
 	{"sun8i", 0, NanoPi_M1, "NanoPi-M1", "0(0)"},
 	{"sun8i", 0, NanoPi_NEO, "NanoPi-NEO", "1(0)"},
 	{"sun8i", 0, NanoPi_NEO_Air, "NanoPi-NEO-Air", "2(0)"},
 	{"sun8i", 0, NanoPi_M1_Plus, "NanoPi-M1-Plus", "3(0)"},
     {"sun8i", 0, NanoPi_Duo, "NanoPi-Duo", "4(0)"},
     {"sun8i", 0, NanoPi_NEO_Core, "NanoPi-NEO-Core", "5(0)"},
-        // kernel 4.x
+    // kernel 4.x
 	{"Allwinnersun8iFamily", 0, NanoPi_M1, "NanoPi-M1", "0(0)"},
-        {"Allwinnersun8iFamily", 0, NanoPi_NEO, "NanoPi-NEO", "1(0)"},
-        {"Allwinnersun8iFamily", 0, NanoPi_NEO_Air, "NanoPi-NEO-Air", "2(0)"},
-        {"Allwinnersun8iFamily", 0, NanoPi_M1_Plus, "NanoPi-M1-Plus", "3(0)"},
-        {"Allwinnersun8iFamily", 0, NanoPi_Duo, "NanoPi-Duo", "4(0)"},
-        {"Allwinnersun8iFamily", 0, NanoPi_NEO_Core, "NanoPi-NEO-Core", "5(0)"},
+    {"Allwinnersun8iFamily", 0, NanoPi_NEO, "NanoPi-NEO", "1(0)"},
+    {"Allwinnersun8iFamily", 0, NanoPi_NEO_Air, "NanoPi-NEO-Air", "2(0)"},
+    {"Allwinnersun8iFamily", 0, NanoPi_M1_Plus, "NanoPi-M1-Plus", "3(0)"},
+    {"Allwinnersun8iFamily", 0, NanoPi_Duo, "NanoPi-Duo", "4(0)"},
+    {"Allwinnersun8iFamily", 0, NanoPi_NEO_Core, "NanoPi-NEO-Core", "5(0)"},
 
 
 	// a64

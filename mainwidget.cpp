@@ -20,8 +20,8 @@
 #include "sys/sysinfo.h"
 #include "boardtype_friendlyelec.h"
 
-TMainWidget::TMainWidget(QWidget *parent) :
-    QWidget(parent),bg(QPixmap(":/bg.png"))
+TMainWidget::TMainWidget(QWidget *parent, bool transparency, const QString& surl) :
+    QWidget(parent),bg(QPixmap(":/bg.png")),transparent(transparency),sourceCodeUrl(surl)
 {
     mpKeepAliveTimer = new QTimer();
     mpKeepAliveTimer->setSingleShot(false);
@@ -188,8 +188,11 @@ void TMainWidget::paintEvent(QPaintEvent *)
 
     int space = 3;
     int itemHeight = 20;
-    p.fillRect(0,0,width(),height(),QBrush(QColor(0,0,0)));
-    p.drawPixmap(0, 0, width(), height(), bg);
+
+    if (!transparent) {
+        p.fillRect(0,0,width(),height(),QBrush(QColor(0,0,0)));
+        p.drawPixmap(0, 0, width(), height(), bg);
+    }
 
     QString ip = eth0IP;
     if (ip == "0.0.0.0") {
@@ -206,7 +209,7 @@ void TMainWidget::paintEvent(QPaintEvent *)
         p.setPen(QPen(QColor(192,192,192)));
         // const int buttonWidth = width()/4;                                                                   
         const int buttonHeight = height()/12;                                                                
-        p.drawText(10,height()-5-buttonHeight-5-buttonHeight, "View source code on github: https://github.com/friendlyarm/QtE-Demo.git");
+        p.drawText(10,height()-5-buttonHeight-5-buttonHeight, QString("View source code on github: %1").arg(sourceCodeUrl));
     }
 }
 
