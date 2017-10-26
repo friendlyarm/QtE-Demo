@@ -17,8 +17,12 @@
 
 #ifndef WIDGET_H
 #define WIDGET_H
-
+#include <QtCore/QtGlobal>
+#if QT_VERSION >= 0x050000
 #include <QtWidgets>
+#else
+#include <QtGui>
+#endif
 class TMainWidget : public QWidget
 {
     Q_OBJECT
