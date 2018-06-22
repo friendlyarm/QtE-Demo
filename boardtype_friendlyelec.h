@@ -71,6 +71,10 @@ typedef struct {
 #define AMLOGIC_BASE (8000)
 #define NanoPi_K2 (AMLOGIC_BASE+1)
 
+//rk3399
+#define RK3399_BASE (9000)
+#define NanoPC_T4 (RK3399_BASE+1)
+
 extern int getBoardType(BoardHardwareInfo** retBoardInfo);
 
 #endif

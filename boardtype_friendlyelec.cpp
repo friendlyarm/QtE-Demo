@@ -71,6 +71,9 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
 
 	//k2
 	{"Amlogic", 0, NanoPi_K2, "NanoPi-K2", ""},
+
+    //t4
+    {"nanopi4", 0, NanoPC_T4, "NanoPC-T4",""},
 };
 
 static int getFieldValueInCpuInfo(char* hardware, int hardwareMaxLen, char* revision, int revisionMaxLen )
