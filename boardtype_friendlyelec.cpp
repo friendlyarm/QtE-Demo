@@ -40,6 +40,8 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
         {"sun8i", 0, NanoPi_NEO_Core, "NanoPi-NEO-Core", "5(0)"},
         {"sun8i", 0, NanoPi_K1, "NanoPi-K1", "6(0)"},
         {"sun8i", 0, NanoPi_K1, "NanoPi-Hero", "7(0)"},
+        {"sun8i", 0, NanoPi_K1, "NanoPi-Duo2", "8(0)"},
+
         // kernel 4.x
 	{"Allwinnersun8iFamily", 0, NanoPi_M1, "NanoPi-M1", "0(0)"},
         {"Allwinnersun8iFamily", 0, NanoPi_NEO, "NanoPi-NEO", "1(0)"},
@@ -49,6 +51,7 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
         {"Allwinnersun8iFamily", 0, NanoPi_NEO_Core, "NanoPi-NEO-Core", "5(0)"},
         {"Allwinnersun8iFamily", 0, NanoPi_K1, "NanoPi-K1", "6(0)"},
         {"Allwinnersun8iFamily", 0, NanoPi_Hero, "NanoPi-Hero", "7(0)"},
+        {"Allwinnersun8iFamily", 0, NanoPi_Duo2, "NanoPi-Duo2", "8(0)"},
 
 
 	// a64
@@ -69,11 +72,14 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
     {"Allwinnersun50iw2Family", 4, NanoPi_NEO_Core2, "NanoPi-NEO-Core2", "0(0)"},
     {"Allwinnersun50iw2Family", 4, NanoPi_K1_Plus, "NanoPi-K1-Plus", "4(0)"},
 
-	//k2
-	{"Amlogic", 0, NanoPi_K2, "NanoPi-K2", ""},
+    //k2
+    {"Amlogic", 0, NanoPi_K2, "NanoPi-K2", ""},
 
     //t4
     {"nanopi4", 0, NanoPC_T4, "NanoPC-T4",""},
+    {"nanopi4", 1, NanoPi_M4, "NanoPi-M4",""},
+    {"nanopi4", 2, NanoPC_T4, "NanoPC-T4",""},
+    {"nanopi4", 4, NanoPi_NEO4, "NanoPi-NEO4",""},
 };
 
 static int getFieldValueInCpuInfo(char* hardware, int hardwareMaxLen, char* revision, int revisionMaxLen )
