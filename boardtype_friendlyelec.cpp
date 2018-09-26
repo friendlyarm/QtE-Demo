@@ -26,6 +26,7 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
 
 	//s5p6818
 	{"nanopi3", 1, NanoPC_T3, "NanoPC-T3",""},
+	{"nanopi3", 2, NanoPi_M3B, "NanoPi-M3B",""},
 	{"nanopi3", 3, Smart6818, "Smart6818",""},
 	{"nanopi3", 4, NanoPC_T3T, "NanoPC-T3T",""},
 	{"nanopi3", 5, NanoPi_Fire3, "NanoPi-Fire3",""},

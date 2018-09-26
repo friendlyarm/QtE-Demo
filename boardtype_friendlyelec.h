@@ -39,6 +39,7 @@ typedef struct {
 //s5p6818
 #define S5P6818_BASE (6818)
 #define NanoPC_T3 (S5P6818_BASE+1)
+#define NanoPi_M3B (S5P6818_BASE+2)
 #define Smart6818 (S5P6818_BASE+3)
 #define NanoPC_T3T (S5P6818_BASE+4)
 #define NanoPi_Fire3 (S5P6818_BASE+5)
