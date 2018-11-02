@@ -23,6 +23,10 @@
 #else
 #include <QtGui>
 #endif
+
+#include "tft28lcd.h"
+#include <sys/time.h>
+
 class TMainWidget : public QWidget
 {
     Q_OBJECT
@@ -36,6 +40,7 @@ private slots:
 private:
     void resizeEvent(QResizeEvent*);
     void paintEvent(QPaintEvent *);
+    void customEvent(QEvent*);
 private:
     QTimer* mpKeepAliveTimer;
     QString loadAvg;
@@ -50,6 +55,10 @@ private:
     QPushButton* quitButton;
     bool transparent;
     QString sourceCodeUrl;
+    bool isUsingTFT28LCD;
+    TFT28LCDThread* tft28LCDThread;
+    int progresses[3];
+    struct timeval startTime;
 
 };
 

@@ -23,6 +23,17 @@
 TMainWidget::TMainWidget(QWidget *parent, bool transparency, const QString& surl) :
     QWidget(parent),bg(QPixmap(":/bg.png")),transparent(transparency),sourceCodeUrl(surl)
 {
+    const QString qwsDisplay = QString(qgetenv("QWS_DISPLAY"));
+    isUsingTFT28LCD = qwsDisplay.contains("/dev/fb-st7789s");
+    tft28LCDThread = NULL;
+    for (unsigned int i=0; i<sizeof(progresses)/sizeof(int); i++) {
+        progresses[i]=0;
+    }
+    if (isUsingTFT28LCD) {
+        tft28LCDThread =new TFT28LCDThread(this, this);
+        tft28LCDThread->start();
+    }
+
     mpKeepAliveTimer = new QTimer();
     mpKeepAliveTimer->setSingleShot(false);
     QObject::connect(mpKeepAliveTimer, SIGNAL(timeout()), this, SLOT(onKeepAlive()));
@@ -33,6 +44,8 @@ TMainWidget::TMainWidget(QWidget *parent, bool transparency, const QString& surl
 
     qtdemoButton = new QPushButton("Start Qt Demo >>", this);
     connect(qtdemoButton, SIGNAL(clicked()), this, SLOT(qtdemoButtonClicked()));
+
+    gettimeofday(&startTime,NULL);
 }
 
 void TMainWidget::qtdemoButtonClicked() {
@@ -211,5 +224,74 @@ void TMainWidget::paintEvent(QPaintEvent *)
         const int buttonHeight = height()/12;                                                                
         p.drawText(10,height()-5-buttonHeight-5-buttonHeight, QString("View source code on github: %1").arg(sourceCodeUrl));
     }
+
+    if (isUsingTFT28LCD) {
+        const int keyCount = sizeof(progresses)/sizeof(int);
+        const int maxProgressBarWidth = width()-20;
+        const int space = 5;
+        const int progressBarX = 10;
+        const int progressBarHeight = 20;
+
+        int progressBarY = height()-progressBarHeight*keyCount-space*(keyCount-1);
+        for (unsigned int i=0; i<sizeof(progresses)/sizeof(int); i++) {
+            int progressBarWidth = int(maxProgressBarWidth * (progresses[i]/100.0));
+            QRect rect(progressBarX, progressBarY, progressBarWidth, progressBarHeight);
+            if (i==0) {
+                p.setBrush(QColor(255,0,0));
+            } else if (i==1) {
+                p.setBrush(QColor(0,255,0));
+            } else if (i==2) {
+                p.setBrush(QColor(0,0,255));
+            } else {
+                p.setBrush(QColor(255,0,255));
+            }
+            p.drawRect(rect);
+            progressBarY += progressBarHeight + space;
+        }
+    }
 }
 
+static inline double time_diff(struct timeval _tstart,struct timeval _tend) {
+  double t1 = 0.;
+  double t2 = 0.;
+
+  t1 = ((double)_tstart.tv_sec * 1000 + (double)_tstart.tv_usec/1000.0) ;
+  t2 = ((double)_tend.tv_sec * 1000 + (double)_tend.tv_usec/1000.0) ;
+
+  return t2-t1;
+}
+
+void TMainWidget::customEvent(QEvent *e)
+{
+    if (e->type() == TFT28LCDKeyEvent::TFT28LCDKEY_EVENT_TYPE) {
+        struct timeval endTime;
+        gettimeofday(&endTime,NULL);
+        if (time_diff(startTime,endTime) < 1000) {
+            // ignore first event
+            QWidget::customEvent(e);
+            return ;
+        }
+        TFT28LCDKeyEvent* ee = (TFT28LCDKeyEvent*)e;
+        if (ee->key == TFT28LCDKeyEvent::KEY1) {
+            progresses[0] += 10;
+            if (progresses[0] > 100) {
+                progresses[0] = 10;
+            }
+            update();
+        } else if (ee->key == TFT28LCDKeyEvent::KEY2) {
+            progresses[1] += 10;
+            if (progresses[1] > 100) {
+                progresses[1] = 10;
+            }
+            update();
+        } else if (ee->key == TFT28LCDKeyEvent::KEY3) {
+            progresses[2] += 10;
+            if (progresses[2] > 100) {
+                progresses[2] = 10;
+            }
+            update();
+        }
+    } else {
+        QWidget::customEvent(e);
+    }
+}

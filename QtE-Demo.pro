@@ -9,6 +9,6 @@ INCLUDEPATH += .
 QT += widgets
 
 # Input
-HEADERS += mainwidget.h util.h boardtype_friendlyelec.h
-SOURCES += main.cpp mainwidget.cpp util.cpp boardtype_friendlyelec.cpp
+HEADERS += mainwidget.h util.h boardtype_friendlyelec.h tft28lcd.h
+SOURCES += main.cpp mainwidget.cpp util.cpp boardtype_friendlyelec.cpp tft28lcd.cpp
 RESOURCES += main.qrc
