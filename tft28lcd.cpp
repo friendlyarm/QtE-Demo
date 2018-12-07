@@ -1,5 +1,6 @@
 #include "tft28lcd.h"
 #include <QtGui>
+#include <QApplication>
 
 #include <stdio.h>
 #include <fcntl.h>
