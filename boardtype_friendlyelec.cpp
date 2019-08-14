@@ -67,6 +67,7 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
     {"sun50iw2", 4, NanoPi_NEO_Plus2, "NanoPi-NEO-Plus2", "2(0)"},
     {"sun50iw2", 4, NanoPi_NEO_Core2, "NanoPi-NEO-Core2", "0(0)"},
     {"sun50iw2", 4, NanoPi_K1_Plus, "NanoPi-K1-Plus", "4(0)"},
+    {"sun50iw2", 4, NanoPi_NEO2_Black, "NanoPi-NEO2-Black", "6(0)"},
 
     // kernel 4.x
     {"Allwinnersun50iw2Family", 4, NanoPi_NEO2, "NanoPi-NEO2", "1(0)"},
@@ -74,6 +75,7 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
     {"Allwinnersun50iw2Family", 4, NanoPi_NEO_Plus2, "NanoPi-NEO-Plus2", "2(0)"},
     {"Allwinnersun50iw2Family", 4, NanoPi_NEO_Core2, "NanoPi-NEO-Core2", "0(0)"},
     {"Allwinnersun50iw2Family", 4, NanoPi_K1_Plus, "NanoPi-K1-Plus", "4(0)"},
+    {"Allwinnersun50iw2Family", 4, NanoPi_NEO2_Black, "NanoPi-NEO2-Black", "6(0)"},
 
     //allwinner h6
     // kernel 3.10
@@ -88,6 +90,8 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
     {"nanopi4", 2, NanoPC_T4, "NanoPC-T4",""},
     {"nanopi4", 4, NanoPi_NEO4, "NanoPi-NEO4",""},
     {"nanopi4", 6, SOM_RK3399, "SOM-RK3399",""},
+    {"nanopi4", 33, NanoPi_M4v2, "NanoPi_M4v2",""},
+    {"nanopi4", 34, NanoPi_M4B, "NanoPi_M4B",""},
 };
 
 static int getFieldValueInCpuInfo(char* hardware, int hardwareMaxLen, char* revision, int revisionMaxLen )
