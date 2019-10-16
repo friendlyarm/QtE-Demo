@@ -69,9 +69,13 @@ typedef struct {
 #define NanoPi_Hero (ALLWINNER_BASE+14)
 #define NanoPi_Duo2 (ALLWINNER_BASE+15)
 #define NanoPi_R1 (ALLWINNER_BASE+16)
-#define NanoPi_C1 (ALLWINNER_BASE+17)
+#define NanoPi_C3 (ALLWINNER_BASE+17)
 #define NanoPi_NEO2_Black (ALLWINNER_BASE+18)
-#define ALLWINNER_MAX NanoPi_NEO2_Black
+#define NanoPi_NEO_S (ALLWINNER_BASE+19)
+#define ZeroPi (ALLWINNER_BASE+20)
+#define NanoPi_R1S_H3 (ALLWINNER_BASE+21)
+#define NanoPi_R1S_H5 (ALLWINNER_BASE+22)
+#define ALLWINNER_MAX ZeroPi
 
 //amlogic
 #define AMLOGIC_BASE (8000)
@@ -85,6 +89,8 @@ typedef struct {
 #define SOM_RK3399 (RK3399_BASE+4)
 #define NanoPi_M4v2 (RK3399_BASE+5)
 #define NanoPi_M4B (RK3399_BASE+6)
+#define SOM_RK3399v2 (RK3399_BASE+7)
+#define NanoPi_NEO4v2 (RK3399_BASE+8)
 
 extern int getBoardType(BoardHardwareInfo** retBoardInfo);
 
