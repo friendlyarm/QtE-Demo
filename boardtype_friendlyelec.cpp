@@ -1,10 +1,6 @@
 #include "boardtype_friendlyelec.h"
 #include <ctype.h>
 
-const char* s5p_board_cputempfile = "/sys/class/hwmon/hwmon0/device/temp_label";
-const char* s5p_board_max_cputempfile = "/sys/class/hwmon/hwmon0/device/temp_max";
-const char* allwinner_tempfile = "/sys/class/thermal/thermal_zone0/temp";
-
 #define LOGD printf
 #define LOGE printf
 
@@ -47,6 +43,7 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
     {"sun8i", 0, NanoPi_NEO_S, "NanoPi-NEO-S", "10(0)"},
     {"sun8i", 0, ZeroPi, "ZeroPi", "11(0)"},
     {"sun8i", 0, NanoPi_R1S_H3, "NanoPi-R1S-H3", "12(0)"},
+    {"sun8i", 0, NanoPi_NEO_Plus2_H3, "NanoPi-NEO-Plus2-H3", "13(0)"},
 
     // kernel 4.x
     {"Allwinnersun8iFamily", 0, NanoPi_M1, "NanoPi-M1", "0(0)"},
@@ -62,6 +59,7 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
     {"Allwinnersun8iFamily", 0, NanoPi_NEO_S, "NanoPi-NEO-S", "10(0)"},
     {"Allwinnersun8iFamily", 0, ZeroPi, "ZeroPi", "11(0)"},
     {"Allwinnersun8iFamily", 0, NanoPi_R1S_H3, "NanoPi-R1S-H3", "12(0)"},
+    {"Allwinnersun8iFamily", 0, NanoPi_NEO_Plus2_H3, "NanoPi-NEO-Plus2-H3", "13(0)"},
 
     // a64
     {"sun50iw1p1", 0, NanoPi_A64, "NanoPi-A64", "0"},
@@ -100,9 +98,18 @@ BoardHardwareInfo gAllBoardHardwareInfo[] = {
     {"nanopi4", 5, NanoPi_NEO4v2, "NanoPi-NEO4v2",""},
     {"nanopi4", 6, SOM_RK3399, "SOM-RK3399",""},
     {"nanopi4", 7, SOM_RK3399v2, "SOM-RK3399v2",""},
+    {"nanopi4", 8, NanoPC_NAS4, "NanoPC-NAS4", ""},
+    {"nanopi4", 9, NanoPi_R4S, "NanoPi-R4S",""},
+    {"nanopi4", 10, NanoPi_R4S, "NanoPi-R4S",""},
     {"nanopi4", 33, NanoPi_M4v2, "NanoPi-M4v2",""},
     {"nanopi4", 34, NanoPi_M4B, "NanoPi-M4B",""},
 
+    //rk3328
+    {"nanopi-r2", 0, NanoPi_R2S, "NanoPi-R2S", ""},
+    {"nanopi-r2", 2, NanoPi_NEO3, "NanoPi-NEO3", ""},
+    {"nanopi-r2", 3, NanoPi_NEO3_S, "NanoPi-NEO3-S", ""},
+    {"nanopi-r2", 4, NanoPi_NEO3_Black, "NanoPi-NEO3-Black", ""},
+    {"nanopi-r2",33, NanoPi_R2Pro, "NanoPi-R2-Pro", ""}
 };
 
 static int getFieldValueInCpuInfo(char* hardware, int hardwareMaxLen, char* revision, int revisionMaxLen )
